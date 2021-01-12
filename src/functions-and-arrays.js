@@ -1,18 +1,92 @@
 // Iteration #1: Find the maximum
-
+function maxOfTwoNumbers(num1, num2) {
+  if(num1 > num2) {
+    return num1;
+  } 
+  return num2;
+}
 // Iteration #2: Find longest word
-const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+// const words = ['mystery', 'brother', 'aviator', 'crocodile', 'pearl', 'orchard', 'crackpot'];
+function findLongestWord(arr) {
+  let word = "";
+  let newArr = [];
+  
+  if(arr.length == 0) {
+      return null;
+  } else if (arr.length == 1) {
+      return arr[0];
+  } else {
+      for (let i = 0; i<arr.length; i++) {
+        if(word.length < arr[i].length) {
+            word = arr[i];
+        } else if (word.length === arr[i].length) {
+            newArr.push(word);
+          }
+      }
+  
+    if(newArr.length == 0) {
+        return word;  
+    } else {
+        if(word.length < newArr[0].length) {
+            return newArr[0];
+        } else {
+            return word;
+        }
+      } 
+  }
+}
+
 
 // Iteration #3: Calculate the sum
 
 const numbers = [6, 12, 1, 18, 13, 16, 2, 1, 8, 10];
 
+function sumNumbers(arr1) {
+  let sum = 0;
+  for(s of arr1) {
+    sum += s;
+  }
+  return sum;
+}
+
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
+
+function averageNumbers(arr2) {
+  let sum = 0;
+  let avg = 0;
+
+  if(arr2.length == 0) {
+    return null;
+  } else {
+    for(s of arr2) {
+      sum += s;
+    }
+    avg = sum / arr2.length;
+    return avg;
+  }
+  
+}
 const numbersAvg = [2, 6, 9, 10, 7, 4, 1, 9];
 
 // Level 2: Array of strings
 const wordsArr = ['seat', 'correspond', 'linen', 'motif', 'hole', 'smell', 'smart', 'chaos', 'fuel', 'palace'];
+
+function averageWordLength(arr3) {
+  if(arr3.length == 0) {
+    return null;
+  } else if(arr3.length == 1) {
+    return arr3[0].length;
+  } else {
+    let wordsum = 0;
+    let avg = 0;
+    for (let i =0; i<arr3.length; i++) {
+      wordsum += arr3[i].length;
+    }
+    avg = wordsum / arr3.length;
+    return avg;
+  }
+}
 
 // Iteration #5: Unique arrays
 const wordsUnique = [
@@ -29,8 +103,35 @@ const wordsUnique = [
   'bring'
 ];
 
+function uniquifyArray(arr4) {
+  let newArray1 = [];
+  if(arr4.length == 0) {
+     return null;
+  } else {
+      for(let i=0; i<arr4.length; i++) {
+        if(newArray1.includes(arr4[i])) {
+          continue;
+        } else {
+          newArray1.push(arr4[i])
+        }
+      }
+  return newArray1;
+}
+}
 // Iteration #6: Find elements
 const wordsFind = ['machine', 'subset', 'trouble', 'starting', 'matter', 'eating', 'truth', 'disobedience'];
+
+function doesWordExist(arr5, eWord) {
+  
+  if(arr5.length == 0) {
+    return null;
+  } else if(arr5.includes(eWord)) {
+      return true;
+  } else {
+      return false;
+  }
+}
+
 
 // Iteration #7: Count repetition
 const wordsCount = [
@@ -46,6 +147,16 @@ const wordsCount = [
   'disobedience',
   'matter'
 ];
+
+function howManyTimes(arr6, findWord) {
+  let count = 0;
+  for(f of arr6) {
+    if(f === findWord) {
+      count++
+    }
+  }
+  return count;
+}
 
 // Iteration #8: Bonus
 
@@ -71,3 +182,37 @@ const matrix = [
   [20, 73, 35, 29, 78, 31, 90, 1, 74, 31, 49, 71, 48, 86, 81, 16, 23, 57, 5, 54],
   [1, 70, 54, 71, 83, 51, 54, 69, 16, 92, 33, 48, 61, 43, 52, 1, 89, 19, 67, 48]
 ];
+
+function horizontal(arr7) {
+  let newArr1 = [];
+  let hProduct;
+  for(let i=0; i<(arr7.length ); i++ ) {
+     for (let j=0; j<(arr7[i].length - 3); j++) {
+       hProduct = arr7[i][j] * arr7[i][j+1] * arr7[i][j + 2] * arr7[i][j + 3];
+       newArr1.push(hProduct);
+     }
+  }
+  let hMax = Math.max(...newArr1)
+  return hMax;
+}
+
+function vertical(arr7) {
+   let newArr2 = [];
+   let vProduct;
+  for(let k=0; k<(arr7.length -3); k++) {
+    for(let l=0; l<arr7[k].length; l++) {
+       vProduct = arr7[k][l] * arr7[k+1][l] * arr7[k+2][l] * arr7[k+3][l];
+      newArr2.push(vProduct);
+    }
+  }
+  let vMax = Math.max(...newArr2)
+  return vMax;
+}
+
+function greatestProduct(arr8) {
+  let vResult = horizontal(arr8);
+  let hResult = vertical(arr8);
+  
+  let fResult = Math.max(vResult, hResult)
+  return fResult;
+}
