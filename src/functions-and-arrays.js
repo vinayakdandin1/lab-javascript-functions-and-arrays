@@ -49,6 +49,31 @@ function sumNumbers(arr1) {
   return sum;
 }
 
+// Iteration #3.1: Calculate the sum
+
+function sum(arr9) {
+  let newSum = 0
+  if(arr9.length === 0) {
+      return newSum;
+  } else {
+      for(s of arr9) {
+        if(typeof s === "boolean") {
+            if(s === true) {
+              newSum++
+            } 
+        } else if(typeof s === "string") {
+          newSum += s.length;
+        } else if(typeof s === "number"){
+          newSum += s;
+        } else {
+          throw new Error("Unsupported data type");
+        }
+      }
+      return newSum;
+  }
+  
+}
+
 // Iteration #4: Calculate the average
 // Level 1: Array of numbers
 
@@ -86,6 +111,31 @@ function averageWordLength(arr3) {
     avg = wordsum / arr3.length;
     return avg;
   }
+}
+
+// Iteration 4.1
+
+function avg(arr10) {
+  let newSum1 = 0;
+  if(arr10.length === 0) {
+    return null;
+  } else {
+    for(s of arr10) {
+      if(typeof s === "boolean") {
+          if(s === true) {
+            newSum1++
+          } 
+      } else if(typeof s === "string") {
+          newSum1 += s.length;
+      } else if(typeof s === "number"){
+          newSum1 += s;
+      } else {
+          continue;
+      }
+    }
+  }
+  let newAvg = newSum1 / arr10.length
+  return newAvg;
 }
 
 // Iteration #5: Unique arrays
